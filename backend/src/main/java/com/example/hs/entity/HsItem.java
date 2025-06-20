@@ -24,9 +24,6 @@ public class HsItem {
     private String remark;
     private BigDecimal price;
 
-    @Column(name = "created_at")
-    private Timestamp createdAt;
-
     // Getter and Setter
 
     public Long getId() {
@@ -101,11 +98,4 @@ public class HsItem {
         this.price = price;
     }
 
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
 }
