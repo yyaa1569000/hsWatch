@@ -292,7 +292,8 @@
     }
 
     function changeContent(type) {
-      fetch(`http://localhost:8081/api/hs_watchItem?name=${encodeURIComponent(type)}`)
+      // fetch(`http://localhost:8081/api/hs_watchItem?name=${encodeURIComponent(type)}`)
+      fetch("https://hswatch-backend.onrender.com/api/hs_watchItem?name=${encodeURIComponent(type)}`)
         .then((response) => {
           if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
           return response.json();
@@ -331,7 +332,8 @@
     }
 
     function getLeftListData() {
-      fetch("http://localhost:8081/api/hs_leftList")
+      // fetch("http://localhost:8081/api/hs_leftList")
+      fetch("https://hswatch-backend.onrender.com/api/hs_leftList")
         .then((response) => {
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);

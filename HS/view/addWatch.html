@@ -99,7 +99,8 @@
         formData.append("image", document.getElementById("imageFile").files[0]);
         console.log(document.getElementById("imageFile").files[0]);
         try {
-          const res = await fetch("http://localhost:8081/api/upload", {
+          // const res = await fetch("http://localhost:8081/api/upload", {
+          const res = await fetch("https://hswatch-backend.onrender.com/api/upload", {
             method: "POST",
             body: formData,
           });
