@@ -24,7 +24,7 @@ public class HsItem {
     private String remark;
     private BigDecimal price;
 
-    @Column(name = "created_at", insertable = false, updatable = false)
+    @Column(name = "created_at")
     private Timestamp createdAt;
 
     // Getter and Setter
