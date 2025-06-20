@@ -10,18 +10,32 @@ public class HsItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "phone")
     private String phone;
+
+    @Column(name = "series")
     private String series;
 
     @Lob
+    @Column(name = "content")
     private String content;
 
+    @Column(name = "image")
     private String image;
+
+    @Column(name = "remark")
     private String remark;
+
+    @Column(name = "price")
     private BigDecimal price;
 
     // Getter and Setter
