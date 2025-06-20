@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>永生名錶珠寶交流中心</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap 5 JS (包含 Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      body {
+        background: linear-gradient(to bottom, #1a1f27, #121417);
+        color: #e0e0e0;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      h1,
+      h3,
+      p,
+      label {
+        color: #f2f2f2;
+      }
+
+      .navbar,
+      .nav {
+        background-color: #20252b !important;
+        border-radius: noee;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      }
+
+      .navbar-brand h1 {
+        font-size: 1.8rem;
+        color: #f8d67a;
+        font-weight: bold;
+        text-shadow: 0 0 5px rgba(248, 214, 122, 0.3);
+      }
+
+      .navbar-brand img {
+        filter: brightness(1.1) drop-shadow(0 0 3px #f8d67a50);
+      }
+
+      .nav-link {
+        color: #d6d6d6 !important;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #f8d67a !important;
+        border-bottom: 2px solid #f8d67a;
+      }
+
+      .form-control {
+        background-color: #2a2f36;
+        color: #fff;
+        border: 1px solid #444;
+        border-radius: 6px;
+      }
+
+      .form-control::placeholder {
+        color: #aaa;
+      }
+
+      .btn-outline-success {
+        border-color: #f8d67a;
+        color: #f8d67a;
+        transition: all 0.3s ease;
+      }
+
+      .btn-outline-success:hover {
+        background-color: #f8d67a;
+        color: #1a1f27;
+      }
+
+      .image-container {
+        width: auto;
+        height: 250px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #1c1c1c;
+        border: 2px solid #2f2f2f;
+        box-shadow: inset 0 0 20px #00000070;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .list-group-item {
+        background-color: #262c33 !important;
+        border: none;
+        color: #e0e0e0;
+        transition: background-color 0.3s, color 0.3s;
+        border-radius: 5px;
+        margin-bottom: 4px;
+      }
+
+      .list-group-item:hover {
+        background-color: #3b3f45 !important;
+        color: #f8d67a;
+        transform: scale(1.02);
+      }
+      .list-group-item:focus {
+        color: #ffd700; /* 讓點擊後顏色回到原本狀態 */
+        background-color: transparent !important;
+        outline: none; /* 移除點擊後的外框 */
+      }
+
+      .col-3 {
+        background-color: #1e2228;
+        border-right: 1px solid #2c2c2c;
+        border-radius: 8px 0 0 8px;
+      }
+
+      .col-9 {
+        background-color: #23282e;
+        border-radius: 0 8px 8px 0;
+        box-shadow: 0 0 12px #00000055;
+      }
+
+      footer.bg-dark {
+        background-color: #181a1d !important;
+      }
+
+      footer p,
+      footer a {
+        color: #bbb !important;
+      }
+
+      footer a:hover {
+        color: #f8d67a !important;
+      }
+      .image-container {
+        width: auto; /* 保持原本的寬度 */
+        height: 250px; /* 限制高度 */
+        overflow: hidden; /* 隱藏超出範圍的部分 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image-container img {
+        width: 100%; /* 讓圖片填滿容器寬度 */
+        height: 100%; /* 讓圖片填滿容器高度 */
+        object-fit: cover; /* 裁剪圖片，保持比例 */
+        object-position: center; /* 讓圖片的中間部分顯示 */
+      }
+
+      .list-group-item {
+        background-color: transparent !important;
+        border: none; /* 如果不想要邊框 */
+      }
+
+      .submenu {
+        display: none;
+        padding-left: 10px;
+      }
+
+      .img-container img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover; /* 裁切圖片上下部分 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- #region logo、查詢-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid d-flex align-items-center">
+          <div class="d-flex align-items-center me-auto">
+            <a class="navbar-brand" href="index.html">
+              <img src="../assets/logo.png" alt="" style="width: 90px" />
+            </a>
+            <a class="navbar-brand ms-2" href="index.html">
+              <h1>思翰鐘錶交流中心</h1>
+            </a>
+          </div>
+
+          <form class="d-flex align-items-center input-group-sm">
+            <div class="col-auto">
+              <label for="searchInput" class="me-2">商品搜尋：</label>
+            </div>
+            <input id="searchInput" class="form-control" type="search" placeholder="關鍵字" aria-label="Search" />
+            <div class="col-auto ps-2">
+              <label for="searchInput" class="me-2">價格：</label>
+            </div>
+            <input id="searchInput" class="form-control" type="search" placeholder="最高" aria-label="Search" />
+            ~
+            <input id="searchInput" class="form-control" type="search" placeholder="最低" aria-label="Search" />
+            <button class="btn btn-outline-success ms-3 col-auto" type="submit">搜尋</button>
+          </form>
+        </div>
+      </nav>
+      <!-- #endregion -->
+      <!-- #region 導覽列2-->
+      <ul class="nav d-flex justify-content-between">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">關於恆時</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">最新商品</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">一元起標特賣區</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">交易說明</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">本店位置</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">LINE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">回首頁</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="view/addWatch.html">管理員維護</a>
+        </li>
+      </ul>
+      <!-- #endregion -->
+      <!-- #region 廣告圖片-->
+      <div class="image-container">
+        <img src="../assets/watch1.jpg" class="img-fluid" />
+      </div>
+      <!-- #endregion -->
+      <!-- #region 中間內容-->
+      <div class="container">
+        <div class="row">
+          <div class="col-3 text-white p-3">
+            <div class="list-group list-group-flush" id="brandContainer">
+              <!-- 這裡的內容將透過 JavaScript 動態填充 -->
+            </div>
+          </div>
+          <div class="col-9 p-3 d-flex flex-nowrap" id="contentArea">
+            <div class="row">
+              <h3>關於思翰</h3>
+              <!-- 123 -->
+              <div class="col-6 d-flex align-items-center justify-content-center">
+                <img src="../assets/carousel1.jpg" class="img-fluid" alt="圖片" />
+              </div>
+              <!-- 文字區塊 -->
+              <div class="col-6 d-flex align-items-center">
+                <p>思翰鐘錶｜專業名錶買賣交流中心 思翰鐘錶擁有多年名錶買賣經驗，專營世界知名品牌高端腕錶。從典藏至交易，每一只名錶都是精選之作，致力於提供顧客最高品質的服務與最具競爭力的價格。我們深信時計不僅是時間的象徵，更代表著品味與價值，因此我們嚴格把關每一只手錶的來源與品質，確保每位顧客都能安心選購。 我們的服務 名錶買賣｜專業鑑定，合理價格，交易透明 名錶收購｜誠信估價，市場最優回收方案 流當品專區｜優質名錶，價格更具競爭力 手錶維修與保養｜專業技師提供最完善的維修與養護服務 品質保證，誠信至上 思翰鐘錶始終以專業與誠信為服務宗旨，無論是高端腕錶買賣還是寄售交易，我們都確保每筆交易的透明度與保障，讓顧客能夠放心選擇適合自己的時計。 感謝所有支持思翰鐘錶的朋友，我們將持續秉持最高標準的專業精神，為您提供優質的鐘錶服務！歡迎蒞臨門市參觀選購，也可透過我們的官方網站了解更多！</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- #endregion -->
+      <!-- #region 頁尾-->
+      <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+          <p class="mb-1">© 2025 思翰鐘錶 | 專業名錶買賣交流中心</p>
+          <p class="mb-1">地址：台北市信義區某某路99號 | 電話：02-1234-5678</p>
+          <p class="mb-3">營業時間：週一至週六 10:00 - 19:00 | 週日休息</p>
+          <div>
+            <a href="#" class="text-white mx-2">隱私政策</a>
+            <a href="#" class="text-white mx-2">服務條款</a>
+            <a href="#" class="text-white mx-2">聯絡我們</a>
+          </div>
+        </div>
+      </footer>
+      <!-- #endregion -->
+    </div>
+  </body>
+
+  <script>
+    // 切換選單
+    function toggleSubmenu(id) {
+      var submenu = document.getElementById(id);
+      var currentDisplay = window.getComputedStyle(submenu).display;
+
+      // 關閉其他子選單
+      var submenus = document.querySelectorAll(".submenu");
+      submenus.forEach(function (item) {
+        if (item.id !== id) {
+          item.style.display = "none";
+        }
+      });
+
+      // 切換當前選單的顯示狀態
+      submenu.style.display = currentDisplay === "none" ? "block" : "none";
+    }
+
+    function changeContent(type) {
+      fetch(`http://localhost:8081/api/hs_watchItem?name=${encodeURIComponent(type)}`)
+        .then((response) => {
+          if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+          return response.json();
+        })
+        .then((data) => {
+          console.log("data112120", data);
+
+          // 先建立 row，然後用 map 生成所有 col-4 pb-4
+          const contentHTML = `
+            <div class="row">
+                ${data
+                  .map(
+                    (item) => `
+                    <div class="col-4 pb-4">
+                        <div class="card border border-5 bg-secondary" style="width: auto; height:auto;">
+                            <img src="../assets/watch.jpeg" class="card-img" alt="...">
+                            <div class="card-body">
+                                <p class="text-center pt-1">${item.series}</p>
+                                <tr>
+                                    <td>內容：${item.content}</td><br>
+                                    <td>備註：${item.remark}</td><br>
+                                    <td>售價：${item.price}</td>
+                                </tr>
+                            </div>
+                        </div>
+                    </div>
+                `
+                  )
+                  .join("")}
+            </div>
+        `;
+
+          document.getElementById("contentArea").innerHTML = contentHTML;
+        })
+        .catch((error) => console.error("Error fetching data:", error));
+    }
+
+    function getLeftListData() {
+      fetch("http://localhost:8081/api/hs_leftList")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("data", data); // 確保數據正確
+
+          const container = document.getElementById("brandContainer");
+          container.innerHTML = ""; // 清空內容
+
+          data.forEach((item) => {
+            // 創建品牌按鈕
+            const brandButton = document.createElement("button");
+            brandButton.className = "list-group-item list-group-item-action bg-transparent";
+            brandButton.textContent = item.title;
+            brandButton.onclick = () => toggleSubmenu(`submenu-${item.title}`);
+
+            // 創建子選單
+            const submenuDiv = document.createElement("div");
+            submenuDiv.id = `submenu-${item.title}`;
+            submenuDiv.className = "submenu";
+
+            // **遍歷 `names` 陣列，為每個 name 創建獨立按鈕**
+            item.names.forEach((names) => {
+              const nameButton = document.createElement("button");
+              nameButton.className = "list-group-item list-group-item-action";
+              nameButton.textContent = names.name;
+              nameButton.onclick = () => changeContent(names.name);
+              submenuDiv.appendChild(nameButton);
+            });
+
+            // 加入按鈕與子選單
+            container.appendChild(brandButton);
+            container.appendChild(submenuDiv);
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl, {
+          container: "body", // 避免影響排版
+        });
+      });
+    });
+
+    // 呼叫函式以更新內容
+    getLeftListData();
+  </script>
+</html>
