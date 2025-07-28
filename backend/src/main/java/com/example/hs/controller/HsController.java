@@ -72,8 +72,15 @@ public class HsController {
     }
 
     @GetMapping("/hs_watchItem")
-    public List<HsItem> getWatchItem(String name) {
-        List<HsItem> items = repository.findByName(name);
+    public List<HsItem> getWatchItem(@RequestParam String name) {
+        List<HsItem> items;
+
+        if ("new".equalsIgnoreCase(name)) {
+            items = repository.findByNewProductTrue(); // 撈出 is_new_product = true 的資料
+        } else {
+            items = repository.findByName(name); // 撈出符合 name 的資料
+        }
+
         System.err.println(items);
         return items;
     }

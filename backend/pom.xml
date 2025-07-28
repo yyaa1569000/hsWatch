@@ -55,9 +55,16 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-  </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+		<groupId>org.postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		<version>42.7.3</version> <!-- 建議使用最新穩定版 -->
+		<scope>runtime</scope>
+		</dependency>
+
 
   <!-- Spring Data JPA：資料庫 ORM 操作 -->
   <dependency>

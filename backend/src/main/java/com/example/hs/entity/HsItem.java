@@ -11,18 +11,19 @@ public class HsItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String title;
     private String name;
-    private String phone;
     private String series;
-
-    @Lob
     private String content;
-
     private String image;
-    private String remark;
+    private String phone;
+
+    @Column(precision = 10, scale = 2)
     private BigDecimal price;
 
-    @Column(name = "created_at", insertable = false, updatable = false)
-    private java.sql.Timestamp createdAt;
+    private String remark;
+
+    @Column(name = "is_new_product", nullable = false)
+    private Boolean newProduct = false;
 }

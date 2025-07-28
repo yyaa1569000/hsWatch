@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>永生名錶珠寶交流中心</title>
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <!-- Bootstrap 5 JS (包含 Popper.js) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -167,6 +170,12 @@
         height: 120px;
         object-fit: cover; /* 裁切圖片上下部分 */
       }
+
+      /* 自訂白色斜線 */
+      .breadcrumb-white .breadcrumb-item + .breadcrumb-item::before {
+        content: "/";
+        color: white;
+      }
     </style>
   </head>
   <body>
@@ -187,14 +196,34 @@
             <div class="col-auto">
               <label for="searchInput" class="me-2">商品搜尋：</label>
             </div>
-            <input id="searchInput" class="form-control" type="search" placeholder="關鍵字" aria-label="Search" />
+            <input
+              id="searchInput"
+              class="form-control"
+              type="search"
+              placeholder="關鍵字"
+              aria-label="Search"
+            />
             <div class="col-auto ps-2">
               <label for="searchInput" class="me-2">價格：</label>
             </div>
-            <input id="searchInput" class="form-control" type="search" placeholder="最高" aria-label="Search" />
+            <input
+              id="searchInput"
+              class="form-control"
+              type="search"
+              placeholder="最高"
+              aria-label="Search"
+            />
             ~
-            <input id="searchInput" class="form-control" type="search" placeholder="最低" aria-label="Search" />
-            <button class="btn btn-outline-success ms-3 col-auto" type="submit">搜尋</button>
+            <input
+              id="searchInput"
+              class="form-control"
+              type="search"
+              placeholder="最低"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success ms-3 col-auto" type="submit">
+              搜尋
+            </button>
           </form>
         </div>
       </nav>
@@ -205,19 +234,30 @@
           <a class="nav-link" aria-current="page" href="index.html">關於恆時</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">最新商品</a>
+          <a class="nav-link" href="#" onclick="changeContent('new')"
+            >最新商品</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">一元起標特賣區</a>
+          <a class="nav-link" href="#" onclick="changeContent('one_dollar')"
+            >一元起標特賣區</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">交易說明</a>
+          <a
+            class="nav-link"
+            href="#"
+            onclick="changeContent('transaction_description')"
+            >交易說明</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">本店位置</a>
+          <a class="nav-link" href="#" onclick="changeContent('shop_address')"
+            >本店位置</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">LINE</a>
+          <a class="nav-link" href="#" onclick="changeContent('line')">LINE</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="index.html">回首頁</a>
@@ -244,12 +284,28 @@
             <div class="row">
               <h3>關於思翰</h3>
               <!-- 123 -->
-              <div class="col-6 d-flex align-items-center justify-content-center">
-                <img src="../assets/carousel1.jpg" class="img-fluid" alt="圖片" />
+              <div
+                class="col-6 d-flex align-items-center justify-content-center"
+              >
+                <img
+                  src="../assets/carousel1.jpg"
+                  class="img-fluid"
+                  alt="圖片"
+                />
               </div>
               <!-- 文字區塊 -->
               <div class="col-6 d-flex align-items-center">
-                <p>思翰鐘錶｜專業名錶買賣交流中心 思翰鐘錶擁有多年名錶買賣經驗，專營世界知名品牌高端腕錶。從典藏至交易，每一只名錶都是精選之作，致力於提供顧客最高品質的服務與最具競爭力的價格。我們深信時計不僅是時間的象徵，更代表著品味與價值，因此我們嚴格把關每一只手錶的來源與品質，確保每位顧客都能安心選購。 我們的服務 名錶買賣｜專業鑑定，合理價格，交易透明 名錶收購｜誠信估價，市場最優回收方案 流當品專區｜優質名錶，價格更具競爭力 手錶維修與保養｜專業技師提供最完善的維修與養護服務 品質保證，誠信至上 思翰鐘錶始終以專業與誠信為服務宗旨，無論是高端腕錶買賣還是寄售交易，我們都確保每筆交易的透明度與保障，讓顧客能夠放心選擇適合自己的時計。 感謝所有支持思翰鐘錶的朋友，我們將持續秉持最高標準的專業精神，為您提供優質的鐘錶服務！歡迎蒞臨門市參觀選購，也可透過我們的官方網站了解更多！</p>
+                <p>
+                  思翰鐘錶｜專業名錶買賣交流中心
+                  思翰鐘錶擁有多年名錶買賣經驗，專營世界知名品牌高端腕錶。從典藏至交易，每一只名錶都是精選之作，致力於提供顧客最高品質的服務與最具競爭力的價格。我們深信時計不僅是時間的象徵，更代表著品味與價值，因此我們嚴格把關每一只手錶的來源與品質，確保每位顧客都能安心選購。
+                  我們的服務 名錶買賣｜專業鑑定，合理價格，交易透明
+                  名錶收購｜誠信估價，市場最優回收方案
+                  流當品專區｜優質名錶，價格更具競爭力
+                  手錶維修與保養｜專業技師提供最完善的維修與養護服務
+                  品質保證，誠信至上
+                  思翰鐘錶始終以專業與誠信為服務宗旨，無論是高端腕錶買賣還是寄售交易，我們都確保每筆交易的透明度與保障，讓顧客能夠放心選擇適合自己的時計。
+                  感謝所有支持思翰鐘錶的朋友，我們將持續秉持最高標準的專業精神，為您提供優質的鐘錶服務！歡迎蒞臨門市參觀選購，也可透過我們的官方網站了解更多！
+                </p>
               </div>
             </div>
           </div>
@@ -292,46 +348,165 @@
     }
 
     function changeContent(type) {
-      fetch(`http://localhost:8081/api/hs_watchItem?name=${encodeURIComponent(type)}`)
+      console.log("type", type);
+      fetch(
+        `http://localhost:5432/api/hs_watchItem?name=${encodeURIComponent(
+          type
+        )}`
+      )
         .then((response) => {
-          if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+          if (!response.ok)
+            throw new Error(`HTTP error! Status: ${response.status}`);
           return response.json();
         })
         .then((data) => {
           console.log("data112120", data);
-
+          const displayName =
+            type === "new"
+              ? "最新商品"
+              : type === "one_dollar"
+              ? "一元起標特賣區"
+              : type === "transaction_description"
+              ? "交易說明"
+              : type === "line"
+              ? "加我好友"
+              : type === "shop_address"
+              ? "本店位置"
+              : data[0]?.name || "商品列表";
           // 先建立 row，然後用 map 生成所有 col-4 pb-4
-          const contentHTML = `
-            <div class="row">
+          let contentHTML = "";
+
+          // 🕐 如果是一元起標特賣區，就用特別版本的 HTML
+          if (type === "one_dollar") {
+            contentHTML = `
+            
+              <div class="text-start  text-white py-4 rounded">
+                <h3 class="text-center">🔥 一元起標・限時搶購 🔥</h3>
+
+                <p >🎉 千載難逢的機會就在這裡！【一元起標特賣區】限時開搶，品牌手錶最低竟然只要一元起標！不論是氣派男錶、質感女錶、還是高機能運動錶，全場通通參戰，讓你用最驚喜的價格入手夢幻逸品。每日競標精彩不斷，競標成功就像挖到寶，錯過今天，等一年都不一定會再有！快邀朋友一起來搶，精準掌握每一刻，一元開標，手快有，手慢就真的沒囉！⌚🔥</p>
+              </div>
+            `;
+          } else if (type === "new" || data[0]?.name) {
+            // 其他類型：用原本的商品卡片排版
+            contentHTML = `
+              <div class="row">
+                <nav aria-label="breadcrumb" class="breadcrumb-white">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white fw-bold text-decoration-none fs-2" href="index.html">首頁</a></li>
+                    <li class="breadcrumb-item active text-white fw-bold fs-2" aria-current="page">${displayName}</li>
+                  </ol>
+                </nav>
                 ${data
                   .map(
                     (item) => `
                     <div class="col-4 pb-4">
-                        <div class="card border border-5 bg-secondary" style="width: auto; height:auto;">
-                            <img src="../assets/watch.jpeg" class="card-img" alt="...">
-                            <div class="card-body">
-                                <p class="text-center pt-1">${item.series}</p>
-                                <tr>
-                                    <td>內容：${item.content}</td><br>
-                                    <td>備註：${item.remark}</td><br>
-                                    <td>售價：${item.price}</td>
-                                </tr>
-                            </div>
+                      <div class="card border border-5 bg-secondary" style="width: auto; height:auto;">
+                        <img src="../assets/watch.jpeg" class="card-img" alt="...">
+                        <div class="card-body">
+                          <p class="text-center pt-1">${item.series}</p>
+                          <tr>
+                            <td>內容：${item.content}</td><br>
+                            <td>備註：${item.remark}</td><br>
+                            <td>售價：${item.price}</td>
+                          </tr>
                         </div>
+                      </div>
                     </div>
-                `
+                  `
                   )
                   .join("")}
+              </div>
+            `;
+          } else if (type === "transaction_description") {
+            contentHTML = `
+              <div class="row">
+                <nav aria-label="breadcrumb" class="breadcrumb-white">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white fw-bold text-decoration-none fs-2" href="index.html">首頁</a></li>
+                    <li class="breadcrumb-item active text-white fw-bold fs-2" aria-current="page">${displayName}</li>
+                  </ol>
+                </nav>
+            <div class="text-start text-white p-4">
+                <h4 class="fw-bold mb-3">📌 本當舖店交易說明：</h4>
+                <ol class="lh-lg">
+                  <li>需年滿 20 歲方可交易，請出示有效身分證件。</li>
+                  <li>所有典當品須為本人所有，嚴禁代他人典當。</li>
+                  <li>物品需具市場價值，將由專人鑑價後進行借款評估。</li>
+                  <li>借款利率依典當期間與品項制定，詳載於典當合約。</li>
+                  <li>典當期限最長三個月，可展期一次或提前贖回。</li>
+                  <li>逾期未贖回者，視同自動放棄所有權，物品將公開出售。</li>
+                  <li>禁止典當違禁品、仿冒品、非法或侵權物品。</li>
+                  <li>交易全程保密，顧客資料與紀錄絕不外洩。</li>
+                  <li>所有收付交易均提供正式收據，以保障雙方權益。</li>
+                  <li>爭議事項依《當舖業法》及台灣相關法律處理。</li>
+                </ol>
+              </div>
+              </div>
+            `;
+          } else if (type === "shop_address") {
+            contentHTML = `
+              <div class="row">
+                <nav aria-label="breadcrumb" class="breadcrumb-white">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white fw-bold text-decoration-none fs-2" href="index.html">首頁</a></li>
+                    <li class="breadcrumb-item active text-white fw-bold fs-2" aria-current="page">${displayName}</li>
+                  </ol>
+                </nav>
+            <div class="text-start w-100 py-4">
+            <p class="mb-3">新北市新莊區西盛街387巷31號</p>
+            <div class="ratio ratio-16x9">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d903.9048567006123!2d121.4286780457614!3d25.01304458891954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681d8060bbe7bb%3A0xf4458b373bb39b0a!2z5YWJ5qau6YeM6YeM6ZW36L6m5YWs5a6k!5e0!3m2!1szh-TW!2stw!4v1753346468712!5m2!1szh-TW!2stw" 
+                  width="100%" 
+                  height="450" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
             </div>
-        `;
+          </div>
+          </div>
+            `;
+          } else if (type === "line") {
+            contentHTML = `
+              <div class="row">
+                <nav aria-label="breadcrumb" class="breadcrumb-white">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-white fw-bold text-decoration-none fs-2" href="index.html">首頁</a></li>
+                    <li class="breadcrumb-item active text-white fw-bold fs-2" aria-current="page">${displayName}</li>
+                  </ol>
+                </nav>
+            <div class="text-start p-4 rounded">
+              <!-- QR Code 圖片 -->
+              <div class="mb-3">
+                <a href="https://line.me/ti/p/31mPunKjRC" target="_blank">
+                  <img src="../assets/QRcode.jpg" alt="LINE QR Code" style="width:300px;">
+                </a>
+              </div>
 
+              <!-- LINE ID -->
+              <p class="fw-bold mb-2">LINE ID：XXXXX</p>
+
+              <!-- 加入好友按鈕圖 -->
+              <div class="mb-3">
+                <a href="https://line.me/ti/p/31mPunKjRC" target="_blank">
+                  <img src="../assets/add_friend.png" alt="加入好友" style="width:180px;">
+                </a>
+              </div>
+
+              <!-- 提示文字 -->
+              <p class="text-danger fw-bold">📱 手機請直接點選上方加入好友</p>
+            </div>
+            </div>
+            `;
+          }
           document.getElementById("contentArea").innerHTML = contentHTML;
         })
         .catch((error) => console.error("Error fetching data:", error));
     }
 
     function getLeftListData() {
-      fetch("http://localhost:8081/api/hs_leftList")
+      fetch("http://localhost:5432/api/hs_leftList")
         .then((response) => {
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -347,7 +522,8 @@
           data.forEach((item) => {
             // 創建品牌按鈕
             const brandButton = document.createElement("button");
-            brandButton.className = "list-group-item list-group-item-action bg-transparent";
+            brandButton.className =
+              "list-group-item list-group-item-action bg-transparent";
             brandButton.textContent = item.title;
             brandButton.onclick = () => toggleSubmenu(`submenu-${item.title}`);
 
@@ -376,7 +552,9 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
       tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl, {
           container: "body", // 避免影響排版

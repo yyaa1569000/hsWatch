@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HsRepository extends JpaRepository<HsItem, Long> {
     List<HsItem> findByName(String name);
+    List<HsItem> findByNewProductTrue();
 }
