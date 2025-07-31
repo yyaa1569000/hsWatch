@@ -180,15 +180,16 @@
 
       <div class="button-group">
         <button type="submit" class="btn-submit">提交</button>
-        <a href="http://localhost:5173/HS/index.html" class="btn-cancel">取消</a>
+        <a
+          href="https://hswatch-08x4.onrender.com/index.html"
+          class="btn-cancel"
+          >取消</a
+        >
       </div>
     </form>
 
     <script>
-      // if (sessionStorage.getItem("authorized") !== "yes") {
-      //   alert("請先登入");
-      //   window.location.href = "index.html";
-      // }
+      const api = "https://hswatch-08x4.onrender.com/api/";
       document
         .querySelector("#watchForm")
         .addEventListener("submit", async function (e) {
@@ -227,7 +228,7 @@
           );
           console.log(document.getElementById("imageFile").files[0]);
           try {
-            const res = await fetch("http://localhost:8080/api/upload", {
+            const res = await fetch(api + "upload", {
               method: "POST",
               body: formData,
               credentials: "include", // 如果你後端 session 驗證，要帶上 cookie
@@ -261,7 +262,7 @@
 
         // 🧲 載入資料
         try {
-          const res = await fetch("http://localhost:8080/api/getTitles", {
+          const res = await fetch(api + "getTitles", {
             method: "GET",
             credentials: "include", // 如果你後端 session 驗證，要帶上 cookie
           });

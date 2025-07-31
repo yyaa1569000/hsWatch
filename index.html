@@ -266,7 +266,9 @@
           <a class="nav-link" href="index.html">回首頁</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost:8080/api/addWatch">管理員維護</a>
+          <a class="nav-link" href="https://hswatch-08x4.onrender.com/api/addWatch"
+            >管理員維護</a
+          >
         </li>
       </ul>
       <!-- #endregion -->
@@ -333,6 +335,7 @@
   </body>
 
   <script>
+    const api = "https://hswatch-08x4.onrender.com/api/";
     // 切換選單
     function toggleSubmenu(id) {
       var submenu = document.getElementById(id);
@@ -375,9 +378,9 @@
           queryParts.push(`max=${encodeURIComponent(params.maxPrice)}`);
         if (params.minPrice)
           queryParts.push(`min=${encodeURIComponent(params.minPrice)}`);
-        url = `http://localhost:8080/api/hs_search?${queryParts.join("&")}`;
+        url = api + `hs_search?${queryParts.join("&")}`;
       } else {
-        url = `http://localhost:8080/api/hs_watchItem?name=${encodeURIComponent(
+        url = api + `hs_watchItem?name=${encodeURIComponent(
           type
         )}`;
       }
@@ -604,7 +607,7 @@
     }
 
     function getLeftListData() {
-      fetch("http://localhost:8080/api/hs_leftList")
+      fetch(api + "hs_leftList")
         .then((response) => {
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
