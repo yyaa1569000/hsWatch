@@ -27,7 +27,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:5173")
+// @CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://yyaa1569000.github.io")
 @RequestMapping("/api")
 @Slf4j
 @Controller
