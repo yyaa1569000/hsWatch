@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>管理員新增手錶資訊</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 JS (包含 Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+      body {
+        background-color: #121212;
+        font-family: "Segoe UI", sans-serif;
+        color: #fff;
+      }
+
+      .form-title {
+        text-align: center;
+        color: #ffffff;
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .dark-form {
+        background: rgba(30, 30, 30, 0.8);
+        padding: 2rem;
+        border-radius: 10px;
+        max-width: 500px;
+        margin: 0 auto;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      }
+
+      .dark-form label {
+        display: block;
+        margin-top: 1rem;
+        font-weight: bold;
+        color: #ccc;
+      }
+
+      .dark-form input,
+      .dark-form textarea {
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #1e1e1e;
+        color: #fff;
+        border: 1px solid #444;
+        border-radius: 5px;
+        margin-top: 0.3rem;
+      }
+
+      .dark-form input[type="file"] {
+        padding: 0.2rem;
+        background-color: #1a1a1a;
+      }
+
+      .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.5rem;
+      }
+
+      .btn-submit,
+      .btn-cancel {
+        padding: 0.7rem 1.2rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .btn-submit {
+        background-color: #007bff;
+        color: #fff;
+      }
+
+      .btn-submit:hover {
+        background-color: #0056b3;
+      }
+
+      .btn-cancel {
+        background-color: #6c757d;
+        color: #fff;
+      }
+
+      .btn-cancel:hover {
+        background-color: #495057;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="form-title">新增手錶資訊</h2>
+
+    <form id="watchForm" class="dark-form">
+      <div class="mb-3" id="titleContainer">
+        <label for="titleSelect" class="form-label" id="titleLabel"
+          >手錶類型</label
+        >
+        <select id="titleSelect" name="title" class="form-select" required>
+          <option value="">載入中...</option>
+        </select>
+
+        <input
+          type="text"
+          id="titleInput"
+          class="form-control d-none"
+          placeholder="請輸入標題"
+        />
+
+        <div id="noTitleMessage" class="form-text text-muted d-none">
+          資料庫目前無資料
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <button type="button" id="addTitleBtn" class="btn btn-light btn-sm">
+          ➕手動輸入
+        </button>
+        <button
+          type="button"
+          id="titleBackBtn"
+          class="btn btn-light btn-sm d-none"
+        >
+          ← 上一步
+        </button>
+      </div>
+
+      <div class="mb-3" id="nameContainer">
+        <label for="nameSelect" class="form-label" id="nameLabel">品牌</label>
+        <select id="nameSelect" name="name" class="form-select" required>
+          <option value="">載入中...</option>
+        </select>
+
+        <input
+          type="text"
+          id="nameInput"
+          class="form-control d-none"
+          placeholder="請輸入標題"
+        />
+
+        <div id="noNameMessage" class="form-text text-muted d-none">
+          資料庫目前無資料
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <button type="button" id="addNameBtn" class="btn btn-light btn-sm">
+          ➕手動輸入
+        </button>
+        <button
+          type="button"
+          id="nameBackBtn"
+          class="btn btn-light btn-sm d-none"
+        >
+          ← 上一步
+        </button>
+      </div>
+      <label>名稱</label>
+      <input type="text" name="series" required />
+
+      <label>價格</label>
+      <input type="number" name="price" required />
+
+      <label>電話</label>
+      <input type="text" name="phone" />
+
+      <label>內容說明</label>
+      <textarea name="content" rows="4"></textarea>
+
+      <label>備註</label>
+      <input type="text" name="remark" />
+
+      <label>圖片 URL</label>
+      <input type="file" id="imageFile" required />
+
+      <div class="button-group">
+        <button type="submit" class="btn-submit">提交</button>
+        <a href="http://localhost:5173/HS/index.html" class="btn-cancel">取消</a>
+      </div>
+    </form>
+
+    <script>
+      // if (sessionStorage.getItem("authorized") !== "yes") {
+      //   alert("請先登入");
+      //   window.location.href = "index.html";
+      // }
+      document
+        .querySelector("#watchForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const form = e.target;
+          const formData = new FormData();
+          console.log(
+            "titleValue:",
+            titleInput.value,
+            "nameValue:",
+            titleSelect.value
+          );
+          const titleValue = titleInput.classList.contains("d-none")
+            ? titleSelect.value
+            : titleInput.value;
+
+          const nameValue = nameInput.classList.contains("d-none")
+            ? nameSelect.value
+            : nameInput.value;
+          if (!titleValue.trim()) {
+            alert("請輸入或選擇手錶類型！");
+            return;
+          }
+          console.log("titleValue:", titleValue, "nameValue:", nameValue);
+
+          formData.append("title", titleValue);
+          formData.append("name", nameValue);
+          formData.append("series", form.series.value);
+          formData.append("price", form.price.value);
+          formData.append("phone", form.phone.value);
+          formData.append("content", form.content.value);
+          formData.append("remark", form.remark.value);
+          formData.append(
+            "image",
+            document.getElementById("imageFile").files[0]
+          );
+          console.log(document.getElementById("imageFile").files[0]);
+          try {
+            const res = await fetch("http://localhost:8080/api/upload", {
+              method: "POST",
+              body: formData,
+              credentials: "include", // 如果你後端 session 驗證，要帶上 cookie
+            });
+
+            if (res.ok) {
+              alert("資料新增成功！");
+              form.reset();
+            } else {
+              const err = await res.text();
+              alert("新增失敗：" + err);
+            }
+          } catch (error) {
+            console.error("發生錯誤：", error);
+            alert("提交發生錯誤");
+          }
+        });
+
+      window.addEventListener("DOMContentLoaded", async () => {
+        const titleSelect = document.getElementById("titleSelect");
+        const titleInput = document.getElementById("titleInput");
+        const titleBackBtn = document.getElementById("titleBackBtn");
+        const addTitleBtn = document.getElementById("addTitleBtn");
+        const titleMessage = document.getElementById("noTitleMessage");
+
+        const nameSelect = document.getElementById("nameSelect");
+        const nameInput = document.getElementById("nameInput");
+        const nameBackBtn = document.getElementById("nameBackBtn");
+        const addNameBtn = document.getElementById("addNameBtn");
+        const nameMessage = document.getElementById("noNameMessage");
+
+        // 🧲 載入資料
+        try {
+          const res = await fetch("http://localhost:8080/api/getTitles", {
+            method: "GET",
+            credentials: "include", // 如果你後端 session 驗證，要帶上 cookie
+          });
+          const data = await res.json();
+          const { titles, names } = data;
+
+          if (!titles || titles.length === 0) {
+            titleSelect.innerHTML =
+              '<option value="">-- 無可選標題 --</option>';
+            titleMessage.style.display = "block";
+          } else {
+            titleSelect.innerHTML = titles
+              .map((title) => `<option value="${title}">${title}</option>`)
+              .join("");
+            titleMessage.style.display = "none";
+          }
+
+          if (!names || names.length === 0) {
+            nameSelect.innerHTML = '<option value="">-- 無可選標題 --</option>';
+            nameMessage.style.display = "block";
+          } else {
+            nameSelect.innerHTML = names
+              .map((title) => `<option value="${names}">${names}</option>`)
+              .join("");
+            nameMessage.style.display = "none";
+          }
+        } catch (err) {
+          console.error("載入 meta 資料失敗：", err);
+          titleSelect.innerHTML = '<option value="">-- 載入失敗 --</option>';
+          titleMessage.style.display = "none";
+        }
+
+        // ➕ 切換到輸入模式
+        addTitleBtn.addEventListener("click", () => {
+          titleSelect.classList.add("d-none");
+          titleInput.classList.remove("d-none");
+          titleBackBtn.classList.remove("d-none");
+          titleSelect.removeAttribute("name");
+          titleInput.setAttribute("name", "title");
+          titleSelect.removeAttribute("required");
+          titleInput.setAttribute("required", "true");
+        });
+
+        addNameBtn.addEventListener("click", () => {
+          nameSelect.classList.add("d-none");
+          nameInput.classList.remove("d-none");
+          nameBackBtn.classList.remove("d-none");
+          nameSelect.removeAttribute("name");
+          nameInput.setAttribute("name", "name");
+          nameSelect.removeAttribute("required");
+          nameInput.setAttribute("required", "true");
+        });
+
+        // ← 返回下拉選單
+        titleBackBtn.addEventListener("click", () => {
+          titleSelect.classList.remove("d-none");
+          titleInput.classList.add("d-none");
+          titleBackBtn.classList.add("d-none");
+          titleInput.value = "";
+          titleInput.removeAttribute("name");
+          titleSelect.setAttribute("name", "title");
+          titleInput.removeAttribute("required");
+          titleSelect.setAttribute("required", "true");
+        });
+
+        nameBackBtn.addEventListener("click", () => {
+          nameSelect.classList.remove("d-none");
+          nameInput.classList.add("d-none");
+          nameBackBtn.classList.add("d-none");
+          nameInput.value = "";
+          nameInput.removeAttribute("name");
+          nameSelect.setAttribute("name", "name");
+          nameInput.removeAttribute("required");
+          nameSelect.setAttribute("required", "true");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "description": "",
+  "scripts": {
+    "dev": "vite HS"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.6",
+    "swiper": "^11.2.7",
+    "vite": "^6.3.5"
+  }
+}
