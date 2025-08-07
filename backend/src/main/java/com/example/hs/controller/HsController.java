@@ -1,5 +1,7 @@
 package com.example.hs.controller;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.example.hs.entity.HsItem;
 import com.example.hs.repository.HsRepository;
 
@@ -39,6 +41,11 @@ public class HsController {
     private HsRepository repository;
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+            "cloud_name", "dblc0p4pd",
+            "api_key", "546934591939223",
+            "api_secret", "3WInaPMT57wr1QUeh55rtx2S4g4"));
 
     // 左側列表
     @ResponseBody
@@ -103,31 +110,9 @@ public class HsController {
             @RequestParam("image") MultipartFile file,
             @RequestParam Map<String, String> itemData) {
         try {
-            // 相對儲存路徑 ../assets/
-            String projectRoot = System.getProperty("user.dir"); // 取得專案根目錄
-            String relativePath = projectRoot + File.separator + "assets";
-            File uploadFolder = new File(relativePath);
-            if (!uploadFolder.exists()) {
-                uploadFolder.mkdirs();
-            }
-            final String fileName = file.getOriginalFilename();
-
-            // 建立儲存目錄
-            if (!uploadFolder.exists() && !uploadFolder.mkdirs()) {
-                return ResponseEntity.status(500).body("目錄建立失敗");
-            }
-
-            // 目標檔案路徑
-            File targetFile = new File(uploadFolder, fileName);
-
-            // 檢查是否重複
-            if (targetFile.exists()) {
-                return ResponseEntity.status(HttpStatus.CONFLICT)
-                        .body("上傳失敗：檔名 " + fileName + " 已存在，請重新命名圖片。");
-            }
-
-            // 儲存圖片
-            file.transferTo(targetFile);
+            // 上傳圖片到 Cloudinary
+            Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+            String imageUrl = (String) uploadResult.get("secure_url");
 
             // 建立資料
             HsItem item = new HsItem();
@@ -138,13 +123,11 @@ public class HsController {
             item.setPhone(itemData.get("phone"));
             item.setContent(itemData.get("content"));
             item.setRemark(itemData.get("remark"));
-            item.setImage("../assets/" + fileName);
-            // String relativeImagePath = Paths.get("..", "assets", fileName).toString();
-            // item.setImage(relativeImagePath); //雲端存法
+            item.setImage(imageUrl); // ✅ 存 Cloudinary 的 URL
 
             // 資料存入 DB
             HsItem saved = repository.save(item);
-            return ResponseEntity.ok("✅ 成功儲存：" + item.getImage() + "，ID：" + saved.getId());
+            return ResponseEntity.ok("✅ 成功儲存：" + imageUrl + "，ID：" + saved.getId());
 
         } catch (Exception e) {
             e.printStackTrace();
